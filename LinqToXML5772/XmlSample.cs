@@ -15,8 +15,7 @@ namespace LinqToXML5772
         string studentPath = @"StudentXml.xml";
 
         public XmlSample()
-        {
-          
+        {          
             if (!File.Exists(studentPath))
                 CreateFiles();
             else
@@ -63,18 +62,15 @@ namespace LinqToXML5772
         }
         public void SaveStudentListLinq(List<Student> studentList)
         {
-            var v =   from p in studentList
+            var v =   from student in studentList
                                     select new XElement("student",
-                                        new XElement("id", p.Id),
-                                       new XElement("name",
-                                            new XElement("firstName", p.FirstName),
-                                            new XElement("lastName", p.LastName)
-                                            )
+                                               new XElement("id", student.Id),
+                                               new XElement("name",
+                                                    new XElement("firstName", student.FirstName),
+                                                    new XElement("lastName", student.LastName)
+                                                )
                                         );
-
-            studentRoot = new XElement("students",v);
-                                  
-                                  
+            studentRoot = new XElement("students",v);           
             studentRoot.Save(studentPath);
         }
 
@@ -149,7 +145,6 @@ namespace LinqToXML5772
             XElement name = new XElement("name", firstName, lastName);
             XElement s = new XElement("student", id, name);
             studentRoot.Add(s);
-            studentRoot.Save(studentPath);
         }
 
         public bool RemoveStudent(int id)
@@ -168,6 +163,11 @@ namespace LinqToXML5772
             {
                 return false;
             }
+        }
+
+        public void SaveToFile()
+        {
+            studentRoot.Save(studentPath);
         }
 
         public void UpdateStudent(Student student)

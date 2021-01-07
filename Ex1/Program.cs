@@ -10,18 +10,20 @@ namespace Ex1
     {
         static void Main(string[] args)
         {
-            //XElement x1 = new XElement("name","oshri");
-            //XElement x2 = new XElement("ID", 123);
-            //XElement x3 = new XElement("student", x1, x2);
-            
-         XElement  x3 = XElement.Load("tempTAL.xml");
+            //XElement name = new XElement("name", "oshri");
+            //XElement id = new XElement("ID", 123);
+            //XElement student = new XElement("student", id, name);
 
-         IEnumerable<XElement> list = x3.Elements();
+           // student.Save("tempTAL.xml");
+
+            XElement students = XElement.Load("tempTAL.xml");
+
+         IEnumerable<XElement> list = students.Elements();
             
          foreach (var item in list)
          {
-             string name = item.Element("name").Value;
-             XElement x = new XElement("mail", name+"@jct.ac.il");
+             string studentName = item.Element("name").Value;
+             XElement x = new XElement("mail", studentName + "@jct.ac.il");
              item.AddFirst(x);
              Console.WriteLine(item);
              Console.WriteLine();

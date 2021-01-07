@@ -10,16 +10,17 @@ namespace LinqToXML5772
 static void Main(string[] args)
 {
     XmlSample xml = new XmlSample();
-
     for (int i = 0; i < 10; i++)
     {
         Student s = new Student
-        { Id = Student.CountID++, FirstName = "first" + i, LastName = "last" + i };
-
-        
-
+        {
+            Id = Student.CountID++,
+            FirstName = "first" + i,
+            LastName = "last" + i
+        };
         xml.AddStudent(s);
     }
+    xml.SaveToFile();
     xml.RemoveStudent(5);
     xml.UpdateStudent(new Student { Id = 2, FirstName = "oshri", LastName = "cohen" });
     List<Student> list = xml.GetStudentList();

@@ -32,7 +32,6 @@ namespace XmlSeralizerExample
         }
     }
 
-
     class Program
     {
         private static List<Student> getList()
@@ -84,7 +83,7 @@ namespace XmlSeralizerExample
                     PersonName = studentNameArray[id],
                     StudentGender = Gender.female   
                     ,
-                  Courses = new List<Course>{courseList[3],courseList[3],courseList[5]}
+                  Courses = new List<Course>{courseList[2],courseList[3],courseList[5]}
                 },
             };
 
