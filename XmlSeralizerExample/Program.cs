@@ -95,14 +95,15 @@ namespace XmlSeralizerExample
             XmlSerializer x = new XmlSerializer(list.GetType());
             FileStream fs = new FileStream(path, FileMode.Create);
             x.Serialize(fs, list);
+            fs.Close();
         }
 
-        public static List<Student> loadListFromXML(string path)
+        public static IEnumerable<Student> loadListFromXML(string path)
         {
-            List<Student> list;
+            IEnumerable<Student> list;
             XmlSerializer x = new XmlSerializer(typeof(List<Student>));
             FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<Student>)x.Deserialize(fs);
+            list = (IEnumerable<Student>)x.Deserialize(fs);
             return list;
 
         }
@@ -114,8 +115,8 @@ namespace XmlSeralizerExample
 
             string path = "xmlBySerilalizer2.xml";
            
-            //saveListToXML(list,path);
-            List<Student> list2 = loadListFromXML(path);
+            saveListToXML(list,path);
+            IEnumerable<Student> list2 = loadListFromXML(path);
 
             //Student s = new Student { Id = 43, PersonName = "ddjjd" };
             //XmlSerializer x = new XmlSerializer(s.GetType());

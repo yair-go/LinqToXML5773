@@ -10,11 +10,11 @@ namespace Ex1
     {
         static void Main(string[] args)
         {
-            //XElement name = new XElement("name", "oshri");
-            //XElement id = new XElement("ID", 123);
-            //XElement student = new XElement("student", id, name);
+            XElement name = new XElement("name", "oshri");
+            XElement id = new XElement("ID", 123);
+            XElement student = new XElement("student", id, name);
 
-           // student.Save("tempTAL.xml");
+            student.Save("temp2TAL.xml");
 
             XElement students = XElement.Load("tempTAL.xml");
 
